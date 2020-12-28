@@ -1,0 +1,2 @@
+O executavel nao conseque pegar o caminho das imagens, eu nao sei o motivo disso acontece.
+Porem isso nao atrapalha nada do programa. O objeto que devera estar sem nome dentro da area de exibição é a Luz!

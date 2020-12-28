@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="acpPrincipal" prefHeight="547.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mypaint3d.FXMLDocumentController">
+   <children>
+      <SplitPane dividerPositions="0.6501240694789082" layoutX="109.0" layoutY="30.0" prefHeight="497.0" prefWidth="781.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+        <items>
+          <AnchorPane fx:id="acpCanvas" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: gray;">
+               <children>
+                  <Canvas fx:id="canvas" disable="true" height="515.0" layoutX="91.0" layoutY="14.0" onMouseDragged="#movimenta" onMouseMoved="#mouseDown" onMouseReleased="#mouseUp" onScroll="#scroll" width="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="btLuz" cancelButton="true" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" mouseTransparent="true" onMouseMoved="#btLuzSolta" />
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="acpPossibilidades" disable="true" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.4249512670565302" layoutX="14.0" layoutY="117.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <ColorPicker fx:id="corPicker" layoutX="8.0" layoutY="28.0" onAction="#clkCor" prefHeight="25.0" prefWidth="45.0" />
+                              <Label fx:id="lbCorObjeto" layoutX="13.0" layoutY="7.0" text="COR" />
+                              <RadioButton fx:id="rbAramado" layoutX="63.0" layoutY="82.0" mnemonicParsing="false" onAction="#clkrbAramado" selected="true" text="ARAMADO">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="gr_sl" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbSolido" layoutX="63.0" layoutY="130.0" mnemonicParsing="false" onAction="#clkrbSolido" text="SÓLIDO" toggleGroup="$gr_sl" />
+                              <ImageView fx:id="imgVArame" fitHeight="35.0" fitWidth="45.0" layoutX="7.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imgVSolido" fitHeight="35.0" fitWidth="45.0" layoutX="7.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imgVLampada" fitHeight="20.0" fitWidth="20.0" layoutX="231.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TabPane layoutX="31.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab style="-fx-background-color: gray;" text="Informaçoes">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="lbLocalArquivo" layoutX="140.0" layoutY="14.0" text="-">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding></Label>
+                                                <Label fx:id="lbTamanho" layoutX="140.0" layoutY="42.0" text="-">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding></Label>
+                                                <Label fx:id="lbQtdVert" layoutX="140.0" layoutY="68.0" text="-">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding></Label>
+                                                <Label fx:id="lbArq" layoutX="14.0" layoutY="14.0" text="Nome do Arquivo:">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="lbTam" layoutX="66.0" layoutY="42.0" text="Tamanho:">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="lbVert" layoutX="70.0" layoutY="68.0" text="Vértices:">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="lbFae" layoutX="86.0" layoutY="95.0" text="Faces:">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="lbQtdFaces" layoutX="140.0" layoutY="95.0" text="-">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="labelEixoX" layoutX="27.0" layoutY="121.0" text="Rotação Eixo-X:" />
+                                                <Label fx:id="lbEixoX" layoutX="142.0" layoutY="122.0" text="-" />
+                                                <Label fx:id="labelEixoY" layoutX="28.0" layoutY="145.0" text="Rotação Eixo-Y:" />
+                                                <Label fx:id="lbEixoY" layoutX="142.0" layoutY="145.0" text="-" />
+                                             </children></AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab style="-fx-background-color: gray;" text="Configuraçoes">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <RadioButton fx:id="rbFacesOcultas" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkFaceOculta" text="Faces Ocultas" />
+                                                <RadioButton fx:id="rbFrontal" layoutX="6.0" layoutY="76.0" mnemonicParsing="false" onAction="#clkRbFrontal" selected="true" text="Frontal">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="projecao" />
+                                                   </toggleGroup>
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rbLateral" layoutX="4.0" layoutY="102.0" mnemonicParsing="false" onAction="#clkRbLateral" text="Lateral" toggleGroup="$projecao">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />
+                                                   </padding></RadioButton>
+                                                <RadioButton fx:id="rbPlanta" layoutX="4.0" layoutY="129.0" mnemonicParsing="false" onAction="#clkRbPlanta" text="Planta" toggleGroup="$projecao">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />
+                                                   </padding></RadioButton>
+                                                <RadioButton fx:id="rbPerspectiva" layoutX="80.0" layoutY="77.0" mnemonicParsing="false" onAction="#clkRbPerspectiva" text="Perspectiva" toggleGroup="$projecao">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                                <TextField fx:id="tfDistPerspectiva" focusTraversable="false" layoutX="55.0" layoutY="219.0" prefHeight="25.0" prefWidth="54.0" />
+                                                <Label fx:id="lbPerspectiva" layoutX="13.0" layoutY="193.0" prefHeight="15.0" prefWidth="143.0" text="Distancia Perspectiva" />
+                                                <Button fx:id="btPerPos" layoutX="16.0" layoutY="219.0" mnemonicParsing="false" onAction="#clkBtPerPos" prefHeight="25.0" prefWidth="29.0" text="+" />
+                                                <Button fx:id="brPerNeg" layoutX="118.0" layoutY="219.0" mnemonicParsing="false" onAction="#clkBtPerNeg" text="-" />
+                                                <RadioButton fx:id="rbCabinet" layoutX="185.0" layoutY="104.0" mnemonicParsing="false" onAction="#clkRbCabinet" text="Cabinet" toggleGroup="$projecao">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="1.0" top="2.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                                <RadioButton fx:id="rbCavaleira" layoutX="184.0" layoutY="78.0" mnemonicParsing="false" onAction="#clkRbCavaleira" text="Cavaleira" toggleGroup="$projecao">
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="1.0" right="1.0" top="2.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                             </children></AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab style="-fx-background-color: gray;" text="Solido">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <RadioButton fx:id="rbAmbiente" layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkRbAmbiente" text="Ambiente">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="iluminacao" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rbEspecular" layoutX="103.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkRbEspecular" text="Especular" toggleGroup="$iluminacao" />
+                                                <RadioButton fx:id="rbDifusa" layoutX="199.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkRbDifusa" text="Difusa" toggleGroup="$iluminacao" />
+                                                <RadioButton fx:id="rbFlat" layoutX="7.0" layoutY="61.0" mnemonicParsing="false" onAction="#clkRbFlat" text="Flat">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="sombra" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rbGouraud" layoutX="7.0" layoutY="86.0" mnemonicParsing="false" onAction="#clkRbGouraud" text="Gouraud" toggleGroup="$sombra" />
+                                                <RadioButton fx:id="rbPhong" layoutX="7.0" layoutY="111.0" mnemonicParsing="false" onAction="#clkRbPhong" text="Phong" toggleGroup="$sombra" />
+                                                <Slider fx:id="sldVermelho" layoutX="121.0" layoutY="71.0" max="255.0" onMouseReleased="#mvVermelho" style="-fx-background-color: red;" />
+                                                <Slider fx:id="sldVerde" layoutX="121.0" layoutY="118.0" max="255.0" onMouseReleased="#mvVerde" style="-fx-background-color: green;" />
+                                                <Slider fx:id="sldAzul" layoutX="121.0" layoutY="165.0" max="255.0" onMouseReleased="#mvAzul" style="-fx-background-color: blue;" />
+                                                <Label fx:id="lbVermelho" layoutX="122.0" layoutY="51.0" text="Vermelho" />
+                                                <Label fx:id="lbVerde" layoutX="122.0" layoutY="97.0" text="Verde" />
+                                                <Label fx:id="lbAzul" layoutX="122.0" layoutY="143.0" text="Azul" />
+                                                <Label fx:id="lbEspec" layoutX="7.0" layoutY="158.0" prefHeight="35.0" prefWidth="99.0" text="Valor Especularidade" textAlignment="CENTER" wrapText="true">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="tfEspec" alignment="CENTER" focusTraversable="false" layoutX="9.0" layoutY="201.0" prefHeight="25.0" prefWidth="92.0" text="1" />
+                                             </children></AnchorPane>
+                                      </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <MenuBar fx:id="menu" layoutX="29.0" layoutY="14.0" prefHeight="21.0" prefWidth="781.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuFileAbrir" mnemonicParsing="false" onAction="#clkFileAbrir" text="Abrir" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
+               <items>
+                  <MenuItem fx:id="menuAjudaFunc" disable="true" mnemonicParsing="false">
+                     <graphic>
+                        <TextArea fx:id="taFuncionamento" editable="false" wrapText="true" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+          </Menu>
+            <Menu fx:id="menuSobre" mnemonicParsing="false" text="Sobre">
+              <items>
+                <MenuItem fx:id="menuSobreNos" disable="true" mnemonicParsing="false">
+                     <graphic>
+                        <TextArea fx:id="taSobreNos" editable="false" wrapText="true" />
+                     </graphic>
+                  </MenuItem>
+              </items>
+            </Menu>
+        </menus>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </MenuBar>
+   </children>
+</AnchorPane>
